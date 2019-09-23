@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!-- saved from url=(0288)file:///C:/Users/cnqinglin/Desktop/%E9%A5%A5%E4%BA%BA%E8%B0%B7%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0/11-css%E5%B8%83%E5%B1%80%E5%8A%A8%E6%89%8B%E5%AD%A6/%E6%9C%AC%E6%AC%A1%E4%BD%9C%E4%B8%9A%EF%BC%88%E5%8C%85%E5%90%AB%E4%B8%8A%E8%8A%82%E8%AF%BE%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%89/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一般网页涉及到的css知识点（技巧）：</title>
+</head>
+<body>
+        <h3>css层叠样式表（Cascading Style Sheets）</h3>
+    <p>
+        css3三大模块：  <br>
+        css选择器 level 3   <br>
+        css媒体查询 level 3  <br>
+        css color level 3
+    </p>
+    <p>
+        css样式：
+        </p><ul>
+            <li>内联样式</li>
+            <li>style样式</li>
+            <li>link标签方式引入样式（外部文件）</li>
+            <li>在css里引入另一个css(@inport url(./文件名)；)</li>
+            <li>inherit：继承，就是跟随父级元素或body的样式；常用方法：color:inherit; font:inherit; <br>
+                a标签的默认颜色为蓝色；  <br>
+                body颜色为白色；
+            </li>
+        </ul>
+    <p></p>
+    <hr>
+    <h2>css应用小案例 1：导航栏</h2>
+    <h4>导航栏常用到的几个技巧：</h4>
+    <ul>
+        <li>
+             将纵向列表ul&gt;（所有)li通过float方法位于横线上。<br>
+             此时，一定会出现bug，则可以通过对其父级元素添加伪类选择器来消除，具体方法如下： <br>
+             .clearfix::after{   <br>
+             content: "";    <br>
+             display: block;  <br>
+             clear: both;     <br>
+            }
+        </li>
+        <li>
+             选择器: &gt;  符号两边必须是父子关系，不能跳过   <br>
+        </li>
+        <li>
+           a标签的默认样式为text-decoration:underline;  <br>
+           一般改为none;
+        </li>
+        <li>
+            将纵向列表ul&gt;（所有)li通过float方法位于横线上时，间距应为li的margin,而不是a的。若是字体有关的，那么应为a的style. 
+        </li>
+        <li>
+           需要同时浮动的几个标签，必须有同一个父元素；<br> 
+            需要时浮动可以写成内联样式：给父级元素直接加一个clearfix;
+            分别给子级元素style="float:left/right"; <br>
+            这样不仅执行了浮动，而且还消除了bug;
+        </li>
+        <li>
+            解决给导航元素hover以后出现边框而抖动的问题：给hover之前就给导航标签透明的边框。
+        </li>
+        <li> 如果在ul &gt; li里头有个a标签，则必须让li元素包裹a标签，也就是是说使a的高度等于li的高度（a的宽度肯定是比li的宽度小，所以说宽度不用管了），解决这个bug的方法：给a标签display:block;就可以</li>
+    </ul>
+    <hr>
+    <h2>css应用小案例 2：logo</h2>
+    <h4>logo常用到的几个技巧：</h4>
+    <ul>
+        <li>
+            
+        </li>
+        <li>在网页最上方：左边是logo ，右边是导航条，为了好看，两个需要中线对齐，方法为：padding-top/bottom:xxxpx ;</li>
+        <li>
+            需要一个 div 高度为 30px，div 里有一行字垂直居中，字的大小为 14px，应该怎么写 CSS:   <br>
+            方法一:给 div 的样式为 font-size: 14px; line-height: 20px; padding: 5px 0;  <br>
+            方法二：给 div 的样式为 font-size: 14px; line-height: 24px; padding: 3px 0;  <br>
+            方法三：给 div 的样式为 font-size: 14px; line-height: 30px;
+        </li>
+        <li>
+            如果给span元素里的文字垂直居中：   <br>
+            方法一：给文字添加font-size.再给它设置一样的上下padding。  <br>
+            方法二：给span元素设置height:~px; 再给它display:inline-block;再给它设置一样的line-height:~px;(但是这个方法只在line-height比较地的情况下才可以；) ;这是典型的新收的做法，<b>正确的做法以下：</b>  <br>
+            从内向外做：先给个display:inline-block;再给一样大小的上下padding(加上padding之后才达到想要的宽度)。以防在不同的机器中行高不同，最好再给它line-height:~px;  <br>
+            这个做法的好处：因为没给宽高，所以不管文字内容有多少，它都会上下居中；<br>
+            <b>
+                在css布局的时候怎么能做到bug最少，就是不给直接加宽高；而使用display:inline=-block;再加padding;以防在不同的机器中行高不同，最好再给它line-height:~px;
+            </b>
+        </li>
+        <li>
+            文字水平居中：text-align:center;
+        </li>
+    </ul>
+    <ul>
+            <li>
+                <h1>元素高度：</h1>
+            </li>
+            <li>
+                <h2>(inline)内联元素高度：</h2>
+                <p>
+                    最好不要给内联元素直接添加宽高width/height:~px；  <br>
+                    原因：1：内联块元素不接受宽高的，非要让他接受宽高的话给他一个属性：display:inline-block;
+                </p>
+            </li>
+            <li>
+                <h4></h4>
+                <p>
+                    如果在一行里有多个span,那么这一行的高度由最大高度的span决定；
+                </p>
+            </li>
+            <li>
+                <h4>(block)块级元素高度：</h4>
+            </li>
+            <li>
+                块级元素的高度由其内部文档流元素高度总和决定；
+            </li>
+            <li>
+                <h4>文档流： </h4>
+                    <p>
+                        就是文档内元素流动方向:内联元素从左往右，块级元素丛上往下另起一行；  <br>
+                        内联元素：从左往右流动；如果流动遇到阻碍，就会换行继续流动；<br>
+                        1、内联元素带有border,且border不能再一行内容下，则会换行显示，而且不会出两个border;  <br>
+                        2、如果内联元素里有很长的英文单词，则就算一行内容不下这个单词也不会出现换行显示（分割）的现象；如果强行把他打断，则用word-break：break-all/break-word;属性来分开；  <br>
+                        如果是块级元素，每一个元素占一行，从上往下依次流动；<br>  
+                        如果让一个块级元素显示成内联元素一样显示，则有以下两个方法：  <br>
+                        1: 上节课讲的float方法; 建议使用这个方法；  <br>
+                        2: 给块级元素display:inline-block;  但是这个方法不建议使用，它本身就是bug，他是css3史上的一个错误；
+                        
+                    </p>
+            </li>
+            <li>
+                <h4>文字的居中：</h4>
+                <p>
+                    文字的居中不是中线居中，尤其是汉字和英文，而是基线；  <br>
+                    字体的三部分：上部、基线、下部；文字不同行之间除了字体的三部分，还有行与行之间间隙（三部分上下都有一定高度），所以字体三部分 + 上下间隙统称为字体的建议行高。不同字体的建议行高不同； <br>
+                    span元素的高度由里面文字决定，span 的高度是里面最高文字的最上面到最下面的高度；除了里面文字决定span高度之外，还可以给他设置line-height:xx;<br>
+                </p>    
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li>
+                <h2>position:</h2>
+                <p>
+                    </p><h4>相对定位：脱离文档流：</h4>
+                    脱离文档流：达到让不同块级元素重叠的效果；也就是说无视被脱离的元素；<br>
+                    脱离文档流的方法一： position:fixed;相对于屏幕固定，之后还要设置top/left: px……等；  <br>
+                    标签元素一旦脱离文档流，则他的高度不会受父级元素控制；而且宽度也会内缩；  <br>
+                    解决宽度内所的方法 1 、width:100%;但是这样会出bug;所以能不写宽度或高度100%就不写；  <br>
+                    解决宽度内所的方法 2、width/height:100%;照样加，再在添加position:fixed；的元素内再加一个div，然后把新加的div的父级元素的消除浮动的clearfix 移动到这个div的class名中；再加padding 就可以；
+                <p></p>
+                <h4>绝对定位：脱离文档流，但是还时相对与文档流定位：</h4>
+                <p>
+                    写法：  <br>
+                    第一步：在子元素上面添加 position:absolute;  <br>
+                    第二步：在父元素上面添加position:relative;   <br>
+                    意思是说子元素相对于父元素定位，虽然子元素已经脱离父元素；
+                </p>
+            </li>
+            <li>
+                <h4>背景图片位置：</h4>
+                <p>
+                    background-position:center center; //第一个center:水平方向居中，第二个center：垂直方向居中; <br>
+                    想让背景图片与div刚好适应，则添加 background-size:cover;  意思是盖住div的所有面积，然后按比例缩放；
+                </p>
+            </li>
+            <li>
+                <h4>宽度调整方法：</h4>
+                <p>
+                    max-width:  940px ;   //宽度不会超过940px ,而且屏幕变小时自适应；这个方法比直接设置宽度或高度好的多；
+                </p>
+            </li>
+            <li>
+                <h3>用CSS画三角形：</h3> 
+                用到的属性：
+                    <h4>画一个左上角的三角形：</h4>
+                    1、border:30px solod transparent;   <br>
+                    2、border-top-width: 0px;   <br>
+                    3、border-left-color:red;   <br>
+                    4、width:0px;  //这个必须写，因为不写的话他的宽度会自适应的； <br>
+                    5、height:0px;   //这个可以不用写，如果里面没有内容，则他的高度自然会0;
+                    <h4>画其他位置的三角形：选择不同的border;</h4>
+                </li>
+            <li>一般span里不能放div,会出bug,放span就好（内联块元素里不能放块级元素），这个一般用在一个主体上画三角形的时候用；再给它display:block;</li>
+            <li>
+                <h4>hr元素：</h4>
+                <p>
+                    hr元素就是默认的border;
+                </p>
+            </li>
+            <li>
+                <h4>dl、dd、dt元素的上下结构改为左右结构的做法：</h4>
+                <p>
+                    dl dt,dl dd{float:left;    //全部浮动   <br>
+                        width:50%;    //一个dl中每一对 dt dd各占50%的宽度（或者不一定是50%，只要两者合为100%就可以），其他的会另起一行；
+                    }
+                </p>
+            </li>
+            <li>
+                <h4>网页中放图标的方法：</h4>
+                <p>
+                    a标签里放 img标签，然后到iconfont中去调用js码和svg,最后把img替换为svg，再把xxx替换为图标名字就i可以； 
+                </p>
+            </li>
+        </ul>
+
+</body></html>

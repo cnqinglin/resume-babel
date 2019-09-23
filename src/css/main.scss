@@ -1,0 +1,172 @@
+*{margin: 0;padding: 0;}
+body{color: black; font-size: 12px;background-color:#EFEFEF;}
+hr{height: 0px;border: none;border-top: 1px solid #DEDEDE;}
+ul,ol{list-style: none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+/*导航栏开始*/
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  
+.clearfix::after{content: "";display: block;clear: both;}
+/*[data-x].active{outline: 10px solid red;}*/
+[data-x].offset{
+    transform: translateY(100px);
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+@keyframes slideUp{
+    0%{
+        transform: translateY(-30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.topNavBar{color:#9A9DA2;padding:20px 0px 20px 0px;position: fixed; top: 0px;left: 0px;width: 100%;transition: all .8s;}
+.topNavBar.stickty{background: white;transition:all 0.5s;padding:10px 0px 10px 0px;z-index:1;box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);color: #3d4451;}
+.topNavBar-inner{padding: 0 16px;}
+.topNavBar{
+    nav{padding-top: 3px;padding-bottom: 4px;
+        > ul{list-style: none;padding: 0;margin: 0;
+            > li{float: left;margin-left: 17px;margin-right: 17px; position: relative;
+                > a {position: relative; color:inherit; font-weight: bold;
+                    border-top: 3px solid transparent;padding: 5px 0 5px 0;display:block; 
+                }
+            }
+        }
+    }
+}
+
+.topNavBar nav > ul > li.active > a::after,
+.topNavBar nav > ul > li.highlight > a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 0;
+    width: 100%;
+    background: #e06567;
+    height: 3px;
+    animation: menuSlide .3s;
+}
+@keyframes menuSlide{
+    0%{width:0%;}
+    100%{width:100%;}
+}
+
+.topNavBar .submenu{
+    font-size: 14px;
+    display: none; 
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    color: #3d4451;
+    box-shadow: 0px 3px 10px 1px rgba(0,0,0,0.6);
+    cursor: context-menu;
+}
+.topNavBar li.active > .submenu{
+    display: block;
+    animation: submenuSlide .3s;
+}
+@keyframes submenuSlide{
+    0%{
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0;
+    }
+}
+.topNavBar .submenu > li{
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+/*导航栏结束、logo开始*/
+a{text-decoration:none;}
+.topNavBar .logo{font-size: 24px;font-family: "Arial black";}
+.topNavBar .logo .rs{margin-right:4px; color: #e06567;padding-top: 11px;padding-bottom: 4px;}
+.topNavBar .logo .card{color: #9A9DA2;}
+/*logo结束/大背景图开始*/
+.banner{background-image:url("./image/bgimg.jpg");height: 515px;width: 100%;background-position: center center;background-size: cover;}
+.banner .mask{height: 515px;background-color: rgba(0, 0, 0, 0.8);}
+/*banner结束/card中的hello开始*/
+.userCard{max-width: 940px;margin: auto ;background-color:#fff;box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.51);}
+.userCard .text .welcome{background: #E6686A;color: white;/*width: 70px;height:   29px;line-height: 29px;*/
+display: inline-block; text-align:center;padding: 4px 16px;line-height: 2  2px;position:relative; margin-bottom: 10px;}
+    /*hello大体结束/三角形开始*/
+.userCard .text .welcome .triangle{display: block;border:10px solid transparent;width:0px;border-left-color:#E6686A;border-top-width:0px;position: fixed;position: absolute;left:4px;top: 100%;}
+.userCard .text p{font-size: 16px;font-weight: bold;padding-top: 10px;}
+.userCard .picture{float: left;}
+.userCard .text{float: left;}
+.userCard dl dd,
+.userCard dl dt{float: left;padding: 10px 0px ;font-size: 14px;}
+.userCard dl dt{width: 30%;font-weight: bold;}
+.userCard dl dd{width: 60%;color: #5e5c59;}
+.text h1{margin-top: 18px;} 
+.userCard .pictureAndText{padding: 50px;}
+.userCard .pictureAndText .text{margin-left: 65px;width: 470px;}
+.userCard .text hr{margin: 20px 0px;}
+.userCard > footer.media{background-color: #E6686A;text-align: center;    }
+.userCard > footer.media > a{display: inline-block;width: 40px;margin: 16px 0;padding: 5px 0;line-height: 30px;border-radius: 50%;position: relative; 
+}
+.userCard > footer.media > a >span[data-descr] {text-decoration: underline;color: black;cursor: help;}
+.userCard > footer.media > a:hover{background: #CF5D5F;    }
+.media > a >svg{width: 30px;height: 30px;fill: white;vertical-align: top; }
+.media > a:nth-child(1):hover::after {content:"简书上发表了2篇博客和一些随记";position: absolute;left: -10px;top: 60px;min-width: 200px;
+    border: 1px #aaaaaa solid;border-radius: 10px;background-color:white;color: #000000;font-size: 12px;   }
+.media > a:nth-child(2):hover::after {content: "have constructed 10 repositories";position: absolute;left: -10px;top: 60px;min-width: 200px;
+    border: 1px #aaaaaa solid;border-radius: 10px;background-color:white;color: #000000;font-size: 12px;}
+.media > a:nth-child(3):hover::after {content:"QQ:2207328000";position: absolute;left: -10px;top: 60px;min-width: 200px;border: 1px #aaaaaa solid;border-radius: 10px;
+    background-color:white;color: #000000;font-size: 12px;}
+.media > a:nth-child(4):hover::after {content:"推特:有待更新……";position: absolute;left: -10px;top: 60px;min-width: 200px;border: 1px #aaaaaa solid;
+    border-radius: 10px;background-color:white;color: #000000;font-size: 12px;}
+.media > a:nth-child(5):hover::after {content:"微博:  青林爱喝雪碧";position: absolute;left: -10px;top: 60px;min-width: 200px;border: 1px #aaaaaa solid;
+    border-radius: 10px;background-color:white;color: #000000;font-size: 12px;}
+body > main{margin-top: -370px;}
+/*card结束/download开始，*/
+body > main .download-resume-wrapper{text-align: center;}
+body > main .download-resume{font-size: 14px;line-height: 16px;color: #3d4451;font-weight: bold;margin:36px 0; padding:21px 55px;
+    border:1px solid #CDCFD1;display: inline-block; background-color: #EFEFEF;border-radius: 2px;transition:box-shadow 0.3s;}
+body > main .download-resume:hover{box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.2)}  
+/*download结束/introdction开始，*/
+body > main .selfIntroduction{max-width: 940px;margin: auto ;background-color:#EFEFEF;text-align: center;font-family: kai;line-height: 1.8em;font-size: 18px;}
+/*introdction结束，section开始*/
+body > section.skills,
+section.portofolio{max-width: 940px;margin: auto ;margin-top: 60px;background-color:#EFEFEF;}   
+body > section.skills > H2,
+body > section.message > H2,
+section.portofolio > h2{text-align: center;color: #3d4451;font-size: 34px;line-height: 1.2;font-weight: 600; }
+body > section.message > H2{margin-bottom: 40px;}
+body > section.skills > ol{background-color: white;box-shadow: -1px 0px 6px 0px rgba(0,0,0,0.5);padding :43px 50px  10px ;margin-top: 30px;} 
+body > section.skills > ol > li{float: left;width: 48%;box-sizing :border-box; }
+body > section.skills > ol > li > h3{font-size: 14px;line-height: 1.1;padding-right: 40px;}    
+body > section.skills > ol > li:nth-child(even){float: right; }
+section.skills .progressBar{margin:4px 0 40px; height: 5px;border-radius:2px; background-color: #FAE1E1; overflow: hidden;}
+section.skills .progressBar > .progress{width: 50%;height: 100%;background-color:#E6686A;border-radius: 2px; transform: translateX(0);transition: all 1s;}
+section.skills.offset .progress{transform: translateX(-100%);}
+/*技能条结束，作品展示开始*/
+section.portofolio{text-align:center;margin-bottom: 100px;max-width: 720px;}
+section.portofolio h2{margin-bottom: 150px; }
+section.portofolio .swiper-container {width: 668px;height: 501px;}
+section.portofolio .swiper-slide {background: white;}
+section.portofolio .swiper-button-prev{background-color:white; color:#CF5D5F; width: 64px;height: 64px;border-radius: 50%;right: 100%;left: auto;top:60%;  }
+section.portofolio .swiper-button-next{background-color:white; color:#CF5D5F; width: 64px;height: 64px;border-radius: 50%;left: 100%;right: auto;top:60%; }
+
+section.message > ol.messageList {
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid#DDD;
+    background-color: #ECECEC;
+}
+section.message > ol > li{
+    padding: 16px;
+    border-bottom: 1px solid #DDD;
+}
